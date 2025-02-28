@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import NavigationBar from "./components/navigation_bar";
 
 interface IData {
   id: number;
@@ -43,30 +44,38 @@ function App() {
 
   return (
     <>
-      <input
-        onChange={(e) => {
-          setTitle(e.target.value);
-        }}
-      />
-      <button onClick={addData}>Add data</button>
-      {posts.map((post, index) => {
-        return (
-          <div
-            className="box"
-            key={index}
-            style={{
-              display: "flex",
-              border: "1px solid red",
-              flexDirection: "column",
-              margin: "10px",
-            }}
-          >
-            <p> id: {post.id}</p>
+      <NavigationBar />
 
-            <p>{post.title}</p>
-          </div>
-        );
-      })}
+      <div className="content-app">
+        <div>
+          <input
+            type="text"
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
+          <button onClick={addData}>Add data</button>
+        </div>
+
+        {posts.map((post, index) => {
+          return (
+            <div
+              className="box"
+              key={index}
+              style={{
+                display: "flex",
+                border: "1px solid red",
+                flexDirection: "column",
+                margin: "10px",
+              }}
+            >
+              <p> id: {post.id}</p>
+
+              <p>{post.title}</p>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 }

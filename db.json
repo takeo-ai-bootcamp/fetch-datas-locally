@@ -1,38 +1,23 @@
 {
   "posts": [
     {
-      "id": "1",
-      "title": "a title",
-      "views": 100
+      "id": 0,
+      "title": "Do groceries",
+      "views": 400
     },
     {
-      "id": "2",
-      "title": "another title",
-      "views": 200
+      "id": 1,
+      "title": "",
+      "views": 400
+    },
+    {
+      "id": 2,
+      "title": "",
+      "views": 400
     },
     {
       "id": 3,
-      "title": "Yogesh",
-      "views": 400
-    },
-    {
-      "id": 4,
-      "title": "Varsha",
-      "views": 400
-    },
-    {
-      "id": 4,
-      "title": "shiva",
-      "views": 400
-    },
-    {
-      "id": 5,
-      "title": "biswas",
-      "views": 400
-    },
-    {
-      "id": 6,
-      "title": "kalyan",
+      "title": "",
       "views": 400
     }
   ]
