@@ -3,8 +3,11 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import NavigationBar from "./components/navigation_bar";
+import AddData from "./components/add_data";
+import ShowData from "./components/show_data";
+import { Routes, Route } from "react-router";
 
-interface IData {
+export interface IData {
   id: number;
   title: string;
   views: number;
@@ -34,48 +37,21 @@ function App() {
       })
       .catch((error) => console.log("error", error));
   };
+
   useEffect(() => {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log("posts", posts);
-  }, [posts]);
-
   return (
     <>
       <NavigationBar />
-
-      <div className="content-app">
-        <div>
-          <input
-            type="text"
-            onChange={(e) => {
-              setTitle(e.target.value);
-            }}
-          />
-          <button onClick={addData}>Add data</button>
-        </div>
-
-        {posts.map((post, index) => {
-          return (
-            <div
-              className="box"
-              key={index}
-              style={{
-                display: "flex",
-                border: "1px solid red",
-                flexDirection: "column",
-                margin: "10px",
-              }}
-            >
-              <p> id: {post.id}</p>
-
-              <p>{post.title}</p>
-            </div>
-          );
-        })}
-      </div>
+      <Routes>
+        <Route
+          path="add-data"
+          element={<AddData addData={addData} setTitle={setTitle} />}
+        />
+        <Route path="home" element={<ShowData posts={posts} />} />
+      </Routes>
     </>
   );
 }

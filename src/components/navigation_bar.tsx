@@ -1,8 +1,10 @@
+import { Link } from "react-router";
+
 function NavigationBar() {
   return (
     <ul className="navigation-bar">
-      <a href="./">Home</a>
-      <a href="./add-data">Add Data Page</a>
+      <Link to="./home">Home</Link>
+      <Link to="./add-data">Add Data Page</Link>
     </ul>
   );
 }
