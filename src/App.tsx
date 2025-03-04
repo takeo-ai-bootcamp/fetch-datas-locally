@@ -6,6 +6,7 @@ import NavigationBar from "./components/navigation_bar";
 import AddData from "./components/add_data";
 import ShowData from "./components/show_data";
 import { Routes, Route } from "react-router";
+import SinglePost from "./pages/single-post";
 
 export interface IData {
   id: number;
@@ -38,6 +39,25 @@ function App() {
       .catch((error) => console.log("error", error));
   };
 
+  const updateViews = async (
+    id: string | number,
+    increased_view: number,
+  ) => {
+    try {
+      const response = await fetch("http://localhost:3000/posts/" + id, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          views: increased_view,
+        }),
+      });
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -50,7 +70,18 @@ function App() {
           path="add-data"
           element={<AddData addData={addData} setTitle={setTitle} />}
         />
-        <Route path="home" element={<ShowData posts={posts} />} />
+
+        <Route path="posts">
+          <Route
+            index
+            element={<ShowData posts={posts} updateView={updateViews} />}
+          />
+          <Route path=":post_id" element={<SinglePost updateViews={updateViews} />} />
+        </Route>
+        <Route
+          path="home"
+          element={<ShowData posts={posts} updateView={updateViews} />}
+        />
       </Routes>
     </>
   );
