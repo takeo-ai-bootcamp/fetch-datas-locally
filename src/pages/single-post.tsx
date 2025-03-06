@@ -31,9 +31,10 @@ const SinglePost = (props: ISinglePosts) => {
   useEffect(() => {
     if (typeof postData.views === "number" && params.post_id) {
       console.log("Called");
-      props.updateViews(params.post_id, postData.views + 1);
+      const increasedPostData = postData.views + 1;
+      props.updateViews(params.post_id, increasedPostData);
     }
-  }, [postData]);
+  }, []);
 
   return (
     <>

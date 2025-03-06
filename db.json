@@ -1,16 +1,130 @@
 {
   "posts": [
     {
-      "id": "0",
-      "title": "Vikas",
-      "views": 63,
-      "description": "This is the good students so far as i know"
+      "id": "1",
+      "views": 845,
+      "title": "Changes of the world",
+      "description": "The world we know is about to change because Donald trump is the PResident of USA.",
+      "username": "yogesh7733"
     },
     {
       "id": "2",
+      "views": 67,
+      "title": "Big changes in the market.",
+      "description": "The stock price of NVIDIA is growing 150% tomorrow. make sure you have invested your money to see the growth of it. Dont miss out",
+      "username": "media.texk.pvt.ltd"
+    },
+    {
+      "id": "2",
+      "title": "changing the world",
+      "views": 400,
+      "description": "The stock price of NVIDIA is growing 150% tomorrow. make sure you have invested your money to see the growth of it. Dont miss out",
+      "username": "media.texk.pvt.ltd"
+    },
+    {
+      "id": "3",
+      "title": "I love butter chicken",
+      "description": "Butter chicken is the national dish of UK. I dont see a reason why people would not love it. Although i think it is because of the bad experience it give you on the next morning.",
+      "username": "yogesh",
+      "views": 0
+    },
+    {
+      "id": "4",
+      "title": "biryani is also good",
+      "description": "rice and lentils are one of the best but biryani is on the league of it own",
+      "username": "uniquelydone",
+      "views": 0
+    },
+    {
+      "id": "5",
+      "title": "asdasd",
+      "description": "dasdasda",
+      "username": "sdasdasd",
+      "views": 0
+    },
+    {
+      "id": "6",
+      "title": "asdasdasd",
+      "description": "asdasda",
+      "username": "sdasdasd",
+      "views": 0
+    },
+    {
+      "id": "7",
+      "title": "data",
+      "description": "data2",
+      "username": "datea2",
+      "views": 0
+    },
+    {
+      "id": "8",
+      "title": "asdasd",
+      "description": "asdasd",
+      "username": "asdasd",
+      "views": 0
+    },
+    {
+      "id": "9",
+      "title": "asdasd",
+      "description": "asdasda",
+      "username": "sdasdasd",
+      "views": 0
+    },
+    {
+      "id": "10",
+      "title": "asdasd",
+      "description": "asdasda",
+      "username": "sdasdasd",
+      "views": 0
+    },
+    {
+      "id": "11",
+      "title": "asdasd",
+      "description": "asdasda",
+      "username": "sdasdasd",
+      "views": 0
+    },
+    {
+      "id": "12",
+      "title": "asdasd",
+      "description": "asdasda",
+      "username": "sdasdasd",
+      "views": 0
+    },
+    {
+      "id": 13,
+      "title": "sadasdasd",
+      "description": "asdasda",
+      "username": "sdasdasd",
+      "views": 0
+    },
+    {
+      "id": 14,
+      "title": "sadasdasd",
+      "description": "asdasda",
+      "username": "sdasdasd",
+      "views": 0
+    },
+    {
+      "id": 15,
+      "title": "sadasdasd",
+      "description": "asdasda",
+      "username": "sdasdasd",
+      "views": 0
+    },
+    {
+      "id": 16,
+      "title": "asdasda",
+      "description": "sdasda",
+      "username": "sdasdasd",
+      "views": 0
+    },
+    {
+      "id": 17,
       "title": "Yogesh",
-      "views": 369,
-      "description": "This is the good students so far as i know"
+      "description": "Yogesh iss actually dumber than we thought",
+      "username": "shiv",
+      "views": 0
     }
   ]
 }

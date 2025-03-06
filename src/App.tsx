@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import NavigationBar from "./components/navigation_bar";
 import AddData from "./components/add_data";
 import ShowData from "./components/show_data";
 import { Routes, Route } from "react-router";
 import SinglePost from "./pages/single-post";
-
+import { ToastContainer, toast } from "react-toastify";
 export interface IData {
-  id: number;
-  title: string;
+  id: number | string;
   views: number;
+  title: string;
+  description: string;
+  username: string;
 }
 
 function App() {
@@ -26,21 +26,28 @@ function App() {
       .catch((error) => console.log("error", error));
   };
 
-  const addData = () => {
+  const addData = (newPost: IData) => {
     fetch("http://localhost:3000/posts", {
       method: "POST",
-      body: JSON.stringify({ title: title, id: posts.length, views: 400 }),
+      body: JSON.stringify({
+        title: newPost.title,
+        description: newPost.description,
+        username: newPost.username,
+        id: posts.length,
+        views: 0,
+      }),
     })
       .then((response) => response.json())
-      .then((data) => {
+      .then(() => {
         fetchData();
+        toast("Hey you data has been updated");
       })
       .catch((error) => console.log("error", error));
   };
 
   const updateViews = async (id: string | number, increased_view: number) => {
     try {
-      const response = await fetch("http://localhost:3000/posts/" + id, {
+      await fetch("http://localhost:3000/posts/" + id, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -62,10 +69,7 @@ function App() {
     <>
       <NavigationBar />
       <Routes>
-        <Route
-          path="add-data"
-          element={<AddData addData={addData} setTitle={setTitle} />}
-        />
+        <Route path="add-data" element={<AddData addData={addData} />} />
 
         <Route path="posts">
           <Route
@@ -79,9 +83,16 @@ function App() {
         </Route>
         <Route
           path="home"
-          element={<ShowData posts={posts} updateView={updateViews} />}
+          element={
+            <ShowData
+              posts={posts}
+              updateView={updateViews}
+              addData={addData}
+            />
+          }
         />
       </Routes>
+      <ToastContainer />
     </>
   );
 }
