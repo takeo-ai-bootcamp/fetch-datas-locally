@@ -10,11 +10,13 @@ function AddData(props: IProps) {
         <input
           type="text"
           onChange={(e) => {
-            //   props.setTitle(e.target.value);
             props.setTitle(e.target.value);
           }}
+          className="input input-lg"
         />
-        <button onClick={props.addData}>Add data</button>
+        <button onClick={props.addData} className="btn">
+          Add data
+        </button>
       </div>
     </div>
   );

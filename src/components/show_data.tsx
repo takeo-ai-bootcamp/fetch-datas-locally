@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { IData } from "../App";
-
+import viewicons from "../assets/eye.svg";
 interface IProps {
   posts: Array<IData>;
   updateView: (
@@ -17,25 +17,25 @@ function ShowData(props: IProps) {
     navigate("../posts/" + id);
   };
   return (
-    <div>
+    <div className="flex flex-wrap gap-2 place-items-center h-full">
       {props.posts.map((post, index) => {
         return (
           <div
-            className="box"
+            className="card shadow-sm"
             key={index}
-            style={{
-              display: "flex",
-              border: "1px solid red",
-              flexDirection: "column",
-              margin: "10px",
-            }}
             onClick={() => NavigateToIndividualPost(post.id)}
           >
-            <p> id: {post.id}</p>
+            <div className="card-body">
+              <p className="card-title">{post.title}</p>
 
-            <p>Views:{post.views}</p>
-
-            <p>{post.title}</p>
+              <div className="flex justify-between  gap-5 place-items-center">
+                <p className="text-lg font-bold ">{post.id}</p>
+                <p className="text-xs flex place-items-center gap-1">
+                  <img src={viewicons} height="16px" width={"10px"} />
+                  {post.views}
+                </p>
+              </div>
+            </div>
           </div>
         );
       })}

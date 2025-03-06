@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import "./App.css";
 import NavigationBar from "./components/navigation_bar";
 import AddData from "./components/add_data";
 import ShowData from "./components/show_data";
@@ -39,10 +38,7 @@ function App() {
       .catch((error) => console.log("error", error));
   };
 
-  const updateViews = async (
-    id: string | number,
-    increased_view: number,
-  ) => {
+  const updateViews = async (id: string | number, increased_view: number) => {
     try {
       const response = await fetch("http://localhost:3000/posts/" + id, {
         method: "PATCH",
@@ -76,7 +72,10 @@ function App() {
             index
             element={<ShowData posts={posts} updateView={updateViews} />}
           />
-          <Route path=":post_id" element={<SinglePost updateViews={updateViews} />} />
+          <Route
+            path=":post_id"
+            element={<SinglePost updateViews={updateViews} />}
+          />
         </Route>
         <Route
           path="home"
