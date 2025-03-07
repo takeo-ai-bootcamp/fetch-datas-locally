@@ -2,32 +2,39 @@ import { useNavigate } from "react-router";
 import { IData } from "../App";
 import viewicons from "../assets/eye.svg";
 import AddData from "./add_data";
+import { useContext, useEffect } from "react";
+import { postContext } from "../context/Post";
 interface IProps {
-  posts: Array<IData>;
-  updateView: (
+  posts?: Array<IData>;
+  updateView?: (
     id: string | number,
     new_view: number,
     index: number
   ) => Promise<void>;
-  addData: (post: IData) => void;
+  addData?: (post: IData) => void;
 }
 
 function ShowData(props: IProps) {
   const navigate = useNavigate();
+  const posts = useContext(postContext);
 
   const NavigateToIndividualPost = (id: string | number) => {
     navigate("../posts/" + id);
   };
 
   const handleAdd = (post: IData) => {
-    props.addData(post);
+    // props.addData(post);
     document.getElementById("my_modal_2")?.close();
   };
+
+  useEffect(() => {
+    posts.fetchPosts();
+  }, []);
 
   return (
     <div className="flex flex-wrap gap-2 h-full justify-center">
       <div className="flex flex-wrap gap-2 h-full w-2/3 justify-center">
-        {props.posts.map((post, index) => {
+        {posts.data.map((post, index) => {
           return (
             <div
               className="card bg-base-100  shadow-sm w-full -center"

@@ -5,26 +5,12 @@ import ShowData from "./components/show_data";
 import { Routes, Route } from "react-router";
 import SinglePost from "./pages/single-post";
 import { ToastContainer, toast } from "react-toastify";
-export interface IData {
-  id: number | string;
-  views: number;
-  title: string;
-  description: string;
-  username: string;
-}
+import { PostContextProvider } from "./context/Post";
+import SimpleComponent from "./components/Simple_component";
 
 function App() {
   let [posts, setPosts] = useState([] as Array<IData>);
   let [title, setTitle] = useState("" as string);
-
-  const fetchData = () => {
-    fetch("http://localhost:3000/posts")
-      .then((response) => response.json())
-      .then((data) => {
-        setPosts([...data]);
-      })
-      .catch((error) => console.log("error", error));
-  };
 
   const addData = (newPost: IData) => {
     fetch("http://localhost:3000/posts", {
@@ -39,7 +25,7 @@ function App() {
     })
       .then((response) => response.json())
       .then(() => {
-        fetchData();
+        // fetchData();
         toast("Hey you data has been updated");
       })
       .catch((error) => console.log("error", error));
@@ -61,10 +47,6 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   return (
     <>
       <NavigationBar />
@@ -74,7 +56,11 @@ function App() {
         <Route path="posts">
           <Route
             index
-            element={<ShowData posts={posts} updateView={updateViews} />}
+            element={
+              <PostContextProvider>
+                <ShowData />
+              </PostContextProvider>
+            }
           />
           <Route
             path=":post_id"
@@ -93,6 +79,11 @@ function App() {
         />
       </Routes>
       <ToastContainer />
+
+      <SimpleComponent />
+      <PostContextProvider>
+        <SimpleComponent />
+      </PostContextProvider>
     </>
   );
 }
