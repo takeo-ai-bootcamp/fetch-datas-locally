@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { postContext } from "../context/Post";
+import { postContext } from "../context/post/Post";
 
 function SimpleComponent() {
   const post = useContext(postContext);

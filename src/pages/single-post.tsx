@@ -1,13 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { IData } from "../App";
+import { postContext } from "../context/post/Post";
 
-interface ISinglePosts {
-  updateViews: (id: string | number, new_view: number) => Promise<void>;
-}
-
-const SinglePost = (props: ISinglePosts) => {
+const SinglePost = () => {
   const params = useParams();
+
+  const posts = useContext(postContext);
 
   const [postData, setPostData] = useState({} as IData);
 
@@ -32,7 +31,7 @@ const SinglePost = (props: ISinglePosts) => {
     if (typeof postData.views === "number" && params.post_id) {
       console.log("Called");
       const increasedPostData = postData.views + 1;
-      props.updateViews(params.post_id, increasedPostData);
+      posts.updateViews(params.post_id, increasedPostData);
     }
   }, []);
 

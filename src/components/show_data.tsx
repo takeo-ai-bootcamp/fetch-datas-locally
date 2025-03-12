@@ -3,7 +3,8 @@ import { IData } from "../App";
 import viewicons from "../assets/eye.svg";
 import AddData from "./add_data";
 import { useContext, useEffect } from "react";
-import { postContext } from "../context/Post";
+import { postContext } from "../context/post/Post";
+import { ACTIONTYPES } from "../context/post/postReducer";
 interface IProps {
   posts?: Array<IData>;
   updateView?: (
@@ -28,7 +29,7 @@ function ShowData(props: IProps) {
   };
 
   useEffect(() => {
-    posts.fetchPosts();
+    posts.dispatch({ type: ACTIONTYPES.FETCH_DATA, payload: [] });
   }, []);
 
   return (

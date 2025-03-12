@@ -1,18 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IData } from "../App";
+import { postContext } from "../context/post/Post";
 
-interface IProps {
-  addData: (data: IData) => void;
-}
-
-function AddData(_props: IProps) {
+function AddData() {
   const [post, setPost] = useState({} as IData);
+  const post_context = useContext(postContext);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    _props.addData(post);
-
-    
+    // post_context.addData(post);
   };
 
   return (
